@@ -7,79 +7,58 @@ use Illuminate\Http\Request;
 
 class FacturaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    //VISTA TABLA
+    public function readFactura()
     {
-        //
+        $datos['factura'] = factura::paginate(3);
+
+        return view('factura.readFactura', $datos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //FORMULARIO
+    public function createFactura()
     {
-        //
+        return view('factura.creadFactura');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //GUARDAR FORMULARIO
+    public function saveFactura(Request $request)
     {
-        //
+        $factura= $this->validate($request, [
+            'descripcion_f' => "required",
+
+        ]);
+
+        factura::create([
+            "descripcion_f" => $factura["descripcion_f"],
+        ]);
+
+        return redirect('/read/factura')->with('Guardado', "Factura Guardado");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\factura  $factura
-     * @return \Illuminate\Http\Response
-     */
-    public function show(factura $factura)
+    //ACTUALIZAR
+    public function editFactura($no_factura)
     {
-        //
+        $factura = factura::findOrFail($no_factura);
+        return view('factura.updateFactura', compact('factura'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\factura  $factura
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(factura $factura)
+    //GUARDAR ACTUALIZACION
+    public function updateFactura(Request $request, $no_factura)
     {
-        //
+        $datoFactura= request()->except((['_token', '_method']));
+
+
+        factura::where('no_factura', '=', $no_factura)->update($datoFactura);
+
+        return redirect('/read/factura')->with('Modificado', "Factura Modificado");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\factura  $factura
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, factura $factura)
+    //ELIMINAR
+    public function deleteFactura($no_factura)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\factura  $factura
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(factura $factura)
-    {
-        //
+        factura::destroy($no_factura);
+        return redirect('/read/factura')->with('Eliminado', "Factura Eliminado");
     }
 }

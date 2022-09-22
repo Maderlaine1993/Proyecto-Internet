@@ -7,79 +7,67 @@ use Illuminate\Http\Request;
 
 class PaqueteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    //VISTA TABLA
+    public function readPaquete()
     {
-        //
+        $datos['paquete'] = paquete::paginate(3);
+
+        return view('paquete.readPaquete', $datos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    //FORMULARIO
+    public function createPaquete()
     {
-        //
+        return view('paquete.creadPaquete');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    //GUARDAR FORMULARIO
+    public function savePaquete(Request $request)
     {
-        //
+        $paquete = $this->validate($request, [
+            'codigo' => "required|unique:paquetes",
+            'saldo' => "required",
+            'cuotas' => "required",
+            'velocidad' => "required",
+            'fecha_contrato' => "required",
+            'tiempo_contrato' => "required",
+        ]);
+
+        paquete::create([
+            "codigo" => $paquete["codigo"],
+            "saldo" => $paquete["saldo"],
+            "cuotas" => $paquete["cuotas"],
+            "velocidad" => $paquete["velocidad"],
+            "fecha_contrato" => $paquete["fecha_contrato"],
+            "tiempo_contrato" => $paquete["tiempo_contrato"],
+        ]);
+
+        return redirect('/read/paquete')->with('Guardado', "Paquete Guardado");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\paquete  $paquete
-     * @return \Illuminate\Http\Response
-     */
-    public function show(paquete $paquete)
+    //ACTUALIZAR
+    public function editPaquete($codigo)
     {
-        //
+        $paquete = paquete::findOrFail($codigo);
+        return view('paquete.updatePaquete', compact('paquete'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\paquete  $paquete
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(paquete $paquete)
+    //GUARDAR ACTUALIZACION
+    public function updatePaquete(Request $request, $codigo)
     {
-        //
+        $datoPaquete = request()->except((['_token', '_method']));
+
+
+        paquete::where('codigo', '=', $codigo)->update($datoPaquete);
+
+        return redirect('/read/paquete')->with('Modificado', "Paquete Modificado");
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\paquete  $paquete
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, paquete $paquete)
+    //ELIMINAR
+    public function deletePaquete($codigo)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\paquete  $paquete
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(paquete $paquete)
-    {
-        //
+        paquete::destroy($codigo);
+        return redirect('/read/paquete')->with('Eliminado', "Paquete Eliminado");
     }
 }

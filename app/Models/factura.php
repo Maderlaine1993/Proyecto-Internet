@@ -12,7 +12,7 @@ class factura extends Model
     public $table='facturas';
     public $timestamps=true;
     protected $fillable =[
-        'no_factura', 'fecha','descripcion_f',
+        'no_factura','descripcion_f',
     ];
     protected $primaryKey = 'no_factura';
 }

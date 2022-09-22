@@ -15,8 +15,8 @@ class CreateFacturasTable extends Migration
     {
         Schema::create('facturas', function (Blueprint $table) {
             $table->bigIncrements('no_factura');
-            $table->timestamps('fecha');
             $table->string('descripcion_f');
+            $table->timestamps();
         });
     }
 

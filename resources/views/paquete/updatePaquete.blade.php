@@ -1,4 +1,4 @@
-@extends('layauts.base') <!--para heredar de base-->
+@extends('layouts.app') <!--para heredar de base-->
 @section('title', 'Actualizar Paquete') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 
@@ -50,7 +50,7 @@
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->fecha_contrato}}"
+                                <input type="date" class="form-control" value="{{$paquete->fecha_contrato}}"
                                        placeholder="Fecha de Contrato" name="fecha_contrato">
                             </div>
                         </div>

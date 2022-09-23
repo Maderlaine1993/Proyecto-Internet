@@ -1,4 +1,4 @@
-@extends('layauts.base') <!--para heredar de base-->
+@extends('layouts.app') <!--para heredar de base-->
 @section('title', 'Tabla Factura') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 <div class="container">
@@ -9,13 +9,6 @@
             @if(session('Guardado'))
                 <div class="alert alert-success">
                     {{ session('Guardado') }}
-                </div>
-            @endif
-
-        <!-- Mensaje de Error -->
-            @if(session('Modificado'))
-                <div class="alert alert-success">
-                    {{ session('Modificado') }}
                 </div>
             @endif
 
@@ -34,9 +27,8 @@
                 <tr>
                     <th>No. Factura</th>
                     <th>Fecha de Creacion</th>
-                    <th>Fecha de Modificada</th>
                     <th>Descripcion</th>
-                    <th>Acciones</th>
+                    <th>Anular</th>
                 </tr>
                 </thead>
 
@@ -45,14 +37,9 @@
                     <tr>
                         <td>{{$facturas->no_factura}}</td>
                         <td>{{$facturas->created_at}}</td>
-                        <td>{{$facturas->updated_at}}</td>
                         <td>{{$facturas->descripcion_f}}</td>
                         <td>
                             <div class="btn btn-group">
-
-                                <a href="{{ route('editFactura', $facturas->no_factura) }}" class="btn btn-outline-info mb-2 me-2 m-1">
-                                    <i class="fas fa-edit"></i>
-                                </a>
 
                                 <form action="{{route('deleteFactura', $facturas->no_factura)}}" method="POST">
                                     @csrf @method('DELETE')

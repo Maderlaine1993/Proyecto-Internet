@@ -17,29 +17,31 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('layauts.base');
+    return view('auth.login');
 });
 
 /* Routes de Rol*/
-Route::get('/read/rol',  [RolController::class, 'readRol'])->name('readRol');//Ruta para la vista de la tabal rol
-Route::get('/createRol', [RolController::class, 'createRol'])->name('createRol');//Ruta para visualizar formulario
-Route::post('/rol/createRol', [RolController::class, 'saveRol'])->name('rol.saveRol');//Ruta para guardar el formulario
-Route::get('/rol/edit/{id_rol}',  [RolController::class, 'editRol'])->name('editRol'); //Ruta para visualizar formulario de edicion
-Route::patch('/rol/update/{id_rol}',[RolController::class, 'updateRol'])->name('updateRol');//Ruta para guardar la edicion
-Route::delete('delaterol/{id_rol}', [RolController::class,'deleteRol'])->name('deleteRol'); //Ruta para eliminar un registro
+Route::get('/read/rol',  [RolController::class, 'readRol'])->name('readRol')->middleware('auth');//Ruta para la vista de la tabal rol
+Route::get('/createRol', [RolController::class, 'createRol'])->name('createRol')->middleware('auth');//Ruta para visualizar formulario
+Route::post('/rol/createRol', [RolController::class, 'saveRol'])->name('rol.saveRol')->middleware('auth');//Ruta para guardar el formulario
+Route::get('/rol/edit/{id_rol}',  [RolController::class, 'editRol'])->name('editRol')->middleware('auth'); //Ruta para visualizar formulario de edicion
+Route::patch('/rol/update/{id_rol}',[RolController::class, 'updateRol'])->name('updateRol')->middleware('auth');//Ruta para guardar la edicion
+Route::delete('delaterol/{id_rol}', [RolController::class,'deleteRol'])->name('deleteRol')->middleware('auth'); //Ruta para eliminar un registro
 
 /* Routes de Paquete*/
-Route::get('/read/paquete',  [PaqueteController::class, 'readPaquete'])->name('readPaquete');//Ruta para la vista de la tabal paquete
-Route::get('/createPaquete', [PaqueteController::class, 'createPaquete'])->name('createPaquete');//Ruta para visualizar formulario
-Route::post('/paquete/createPaquete', [PaqueteController::class, 'savePaquete'])->name('paquete.savePaquete');//Ruta para guardar el formulario
-Route::get('/paquete/edit/{codigo}',  [PaqueteController::class, 'editPaquete'])->name('editPaquete'); //Ruta para visualizar formulario de edicion
-Route::patch('/paquete/update/{codigo}',[PaqueteController::class, 'updatePaquete'])->name('updatePaquete');//Ruta para guardar la edicion
-Route::delete('delatePaquete/{codigo}', [PaqueteController::class,'deletePaquete'])->name('deletePaquete'); //Ruta para eliminar un registro
+Route::get('/read/paquete',  [PaqueteController::class, 'readPaquete'])->name('readPaquete')->middleware('auth');//Ruta para la vista de la tabal paquete
+Route::get('/createPaquete', [PaqueteController::class, 'createPaquete'])->name('createPaquete')->middleware('auth');//Ruta para visualizar formulario
+Route::post('/paquete/createPaquete', [PaqueteController::class, 'savePaquete'])->name('paquete.savePaquete')->middleware('auth');//Ruta para guardar el formulario
+Route::get('/paquete/edit/{codigo}',  [PaqueteController::class, 'editPaquete'])->name('editPaquete')->middleware('auth'); //Ruta para visualizar formulario de edicion
+Route::patch('/paquete/update/{codigo}',[PaqueteController::class, 'updatePaquete'])->name('updatePaquete')->middleware('auth');//Ruta para guardar la edicion
+Route::delete('delatePaquete/{codigo}', [PaqueteController::class,'deletePaquete'])->name('deletePaquete')->middleware('auth'); //Ruta para eliminar un registro
 
 /* Routes de Factura*/
-Route::get('/read/factura',  [FacturaController::class, 'readFactura'])->name('readFactura');//Ruta para la vista de la tabla de Factura
-Route::get('/createFactura', [FacturaController::class, 'createFactura'])->name('createFactura');//Ruta para visualizar formulario
-Route::post('/factura/createFactura', [FacturaController::class, 'saveFactura'])->name('paquete.saveFactura');//Ruta para guardar el formulario
-Route::get('/factura/edit/{no_factura}',  [FacturaController::class, 'editFactura'])->name('editFactura'); //Ruta para visualizar formulario de edicion
-Route::patch('/factura/update/{no_factura}',[FacturaController::class, 'updateFactura'])->name('updateFactura');//Ruta para guardar la edicion
-Route::delete('delateFactura/{no_factura}', [FacturaController::class,'deleteFactura'])->name('deleteFactura'); //Ruta para eliminar un registro
+Route::get('/read/factura',  [FacturaController::class, 'readFactura'])->name('readFactura')->middleware('auth');//Ruta para la vista de la tabla de Factura
+Route::get('/createFactura', [FacturaController::class, 'createFactura'])->name('createFactura')->middleware('auth');//Ruta para visualizar formulario
+Route::post('/factura/createFactura', [FacturaController::class, 'saveFactura'])->name('paquete.saveFactura')->middleware('auth');//Ruta para guardar el formulario
+Route::delete('delateFactura/{no_factura}', [FacturaController::class,'deleteFactura'])->name('deleteFactura')->middleware('auth'); //Ruta para eliminar un registro
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,4 +1,4 @@
-@extends('layauts.base') <!--para heredar de base-->
+@extends('layouts.app') <!--para heredar de base-->
 @section('title', 'Formulario Factura') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 

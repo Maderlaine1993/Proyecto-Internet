@@ -10,7 +10,9 @@ class RolController extends Controller
     //VISTA DE TABLA
     public function readRol()
     {
-        return view('rol.readRol');
+        $datos['rol'] = rol::paginate(3);
+
+        return view('rol.readRol', $datos);
     }
 
     //VISTA DE FORMULARIO

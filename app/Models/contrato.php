@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class paquete extends Model
+class contrato extends Model
 {
     use HasFactory;
 
-    public $table='paquetes';
-    public $timestamps=false;
+    public $table='contratos';
+    public $timestamps=true;
     protected $fillable =[
-        'codigo', 'descripcion', 'velocidad', 'precio',
+        'id', 'tiem_contrato', 'no_pago','saldo',
     ];
-    protected $primaryKey = 'codigo';
+    protected $primaryKey = 'id';
 }

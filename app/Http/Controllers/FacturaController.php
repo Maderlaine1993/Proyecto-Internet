@@ -27,38 +27,26 @@ class FacturaController extends Controller
     {
         $factura= $this->validate($request, [
             'descripcion_f' => "required",
+            'serie'         => "required",
+            'dte'           => "required",
 
         ]);
 
         factura::create([
             "descripcion_f" => $factura["descripcion_f"],
+            "serie"         => $factura["serie"],
+            "dte"           => $factura["dte"],
         ]);
 
         return redirect('/read/factura')->with('Guardado', "Factura Guardado");
     }
 
-    //ACTUALIZAR
-    public function editFactura($no_factura)
-    {
-        $factura = factura::findOrFail($no_factura);
-        return view('factura.updateFactura', compact('factura'));
-    }
-
-    //GUARDAR ACTUALIZACION
-    public function updateFactura(Request $request, $no_factura)
-    {
-        $datoFactura= request()->except((['_token', '_method']));
-
-
-        factura::where('no_factura', '=', $no_factura)->update($datoFactura);
-
-        return redirect('/read/factura')->with('Modificado', "Factura Modificado");
-    }
 
     //ELIMINAR
     public function deleteFactura($no_factura)
     {
         factura::destroy($no_factura);
+
         return redirect('/read/factura')->with('Eliminado', "Factura Eliminado");
     }
 }

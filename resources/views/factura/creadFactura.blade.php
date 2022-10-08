@@ -23,7 +23,7 @@
             ?>
 
             <div class="card">
-                <form action="{{route('paquete.saveFactura')}}" method="POST">
+                <form action="{{route('factura.saveFactura')}}" method="POST">
                     @csrf
 
                     <div class=" card-header text-center" style="background-color: #005555">
@@ -36,6 +36,20 @@
                             <div class="col-lg">
                                 <input type="text" class="form-control" value=""
                                        placeholder="Descripcion" name="descripcion_f">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Serie" name="serie">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="DTE" name="dte">
                             </div>
                         </div>
                         <br>

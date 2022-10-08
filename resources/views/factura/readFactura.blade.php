@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 ml-5">
-            <h1 class="text-center mt-5" style="color: #005555"> Facturas</h1><br>
+            <h1 class="text-center mt-5" style="color: #005555"><i class="fas fa-file-invoice-dollar"> Facturas</i></h1><br>
             <!-- Mensaje de Error -->
             @if(session('Guardado'))
                 <div class="alert alert-success">
@@ -26,8 +26,11 @@
                 <thead>
                 <tr>
                     <th>No. Factura</th>
+                    <th>Cliente</th>
                     <th>Fecha de Creacion</th>
                     <th>Descripcion</th>
+                    <th>Serie</th>
+                    <th>DTE</th>
                     <th>Anular</th>
                 </tr>
                 </thead>
@@ -36,8 +39,11 @@
                 @foreach($factura as $facturas)
                     <tr>
                         <td>{{$facturas->no_factura}}</td>
+                        <td>he</td>
                         <td>{{$facturas->created_at}}</td>
                         <td>{{$facturas->descripcion_f}}</td>
+                        <td>{{$facturas->serie}}</td>
+                        <td>{{$facturas->dte}}</td>
                         <td>
                             <div class="btn btn-group">
 
@@ -59,6 +65,8 @@
             </table>
             <!-- Paginacion -->
             {{ $factura->links() }}
+
+            <a class="btn btn-primary btn-sm" href=" {{ url('/home') }}">Regresar</a>
 
         </div>
     </div>

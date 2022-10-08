@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePaquetesTable extends Migration
+class CreateContratosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePaquetesTable extends Migration
      */
     public function up()
     {
-        Schema::create('paquetes', function (Blueprint $table) {
-            $table->id('codigo');
-            $table->string('descripcion');
-            $table->string('velocidad');
-            $table->string('precio');
+        Schema::create('contratos', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->timestamps();
+            $table->string('tiem_contrato');
+            $table->string('no_pago');
+            $table->string('saldo');
         });
     }
 
@@ -28,6 +29,6 @@ class CreatePaquetesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('paquetes');
+        Schema::dropIfExists('contratos');
     }
 }

@@ -1,22 +1,14 @@
 @extends('layouts.app') <!--para heredar de base-->
-@section('title', 'Tabla Paquete') <!--nombre pagina, nombre de seccion-->
+@section('title', 'Tabla Contrato') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10 ml-5">
-            <h1 class="text-center mt-5" style="color: #005555"><i class="fas fa-globe" style="color:#005555"> Paquetes</i></h1>
-
+            <h1 class="text-center mt-5" style="color: #005555"><i class="fas fa-file-contract"> Contrato</i></h1><br>
             <!-- Mensaje de Error -->
             @if(session('Guardado'))
                 <div class="alert alert-success">
                     {{ session('Guardado') }}
-                </div>
-            @endif
-
-        <!-- Mensaje de Error -->
-            @if(session('Modificado'))
-                <div class="alert alert-success">
-                    {{ session('Modificado') }}
                 </div>
             @endif
 
@@ -28,34 +20,34 @@
             @endif
 
 
-            <a class="btn btn-success mb-4" href="{{url('/createPaquete')}}">REGISTRAR PAQUETE</a>
+            <a class="btn btn-success mb-4" href="{{url('/createContrato')}}">CREAR CONTRATO</a>
 
             <table class="table table-light table-bordered table-hover text-center">
                 <thead>
                 <tr>
-                    <th>No.Codigo</th>
-                    <th>Descripcion</th>
-                    <th>Velocidad (Mbps)</th>
-                    <th>Precio</th>
-                    <th>Acciones</th>
+                    <th>No. Contrato</th>
+                    <th>Cliente</th>
+                    <th>Tiempo de validacion</th>
+                    <th>Cuotas</th>
+                    <th>Saldo</th>
+                    <th>Fecha</th>
+                    <th>Anular</th>
                 </tr>
                 </thead>
 
                 <tbody>
-                @foreach($paquete as $paquetes)
+                @foreach($contrato as $contratos)
                     <tr>
-                        <td>{{$paquetes->codigo}}</td>
-                        <td>{{$paquetes->descripcion}}</td>
-                        <td>{{$paquetes->velocidad}}</td>
-                        <td>Q {{$paquetes->precio}}</td>
+                        <td>{{$contratos->id}}</td>
+                        <td>cliente</td>
+                        <td>{{$contratos->tiem_contrato}}</td>
+                        <td>{{$contratos->no_pago}}</td>
+                        <td>Q {{$contratos->saldo}}</td>
+                        <td>{{$contratos->created_at}}</td>
                         <td>
                             <div class="btn btn-group">
 
-                                <a href="{{ route('editPaquete', $paquetes->codigo) }}" class="btn btn-outline-info mb-2 me-2 m-1">
-                                    <i class="fas fa-edit"></i>
-                                </a>
-
-                                <form action="{{route('deletePaquete', $paquetes->codigo)}}" method="POST">
+                                <form action="{{route('deleteContrato', $contratos->id)}}" method="POST">
                                     @csrf @method('DELETE')
 
                                     <button type="submit" onclick="return confirm('¿Seguro de borrar el paquete?');" class="btn btn-outline-danger mb-2 mr-2 m-1">
@@ -72,7 +64,7 @@
 
             </table>
             <!-- Paginacion -->
-            {{ $paquete->links() }}
+            {{ $contrato->links() }}
 
             <a class="btn btn-primary btn-sm" href=" {{ url('/home') }}">Regresar</a>
 

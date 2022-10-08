@@ -1,5 +1,5 @@
 @extends('layouts.app') <!--para heredar de base-->
-@section('title', 'Actualizar Paquete') <!--nombre pagina, nombre de seccion-->
+@section('title', 'Formulario Cliente') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 
 <div class="container">
@@ -18,50 +18,64 @@
             @endif
 
             <div class="card">
-                <form action="{{route('updatePaquete', $paquete->codigo)}}" method="POST">
-                    @csrf @method('PATCH')
+                <form action="{{route('cliente.saveCliente')}}" method="POST">
+                    @csrf
 
                     <div class=" card-header text-center" style="background-color: #005555">
-                        <h2 style="color: #FEFBE7"> Actualizar Paquete </h2>
+                        <h2 style="color: #FEFBE7"> Registrar Cliente </h2>
                     </div>
 
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->codigo}}"
-                                       placeholder="No.Codigo" name="codigo">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="NIT" name="nit">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->descripcion}}"
-                                       placeholder="Descripcion" name="descripcion">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Nombre" name="nombre">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->velocidad}}"
-                                       placeholder="Velocidad (Mbps)" name="velocidad">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Apellido" name="apellido">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->precio}}"
-                                       placeholder="Precio" name="precio">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Direccion" name="direccion">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Correo" name="correo">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Telefono" name="telefono">
                             </div>
                         </div>
                         <br>
 
                         <div class="row form-group">
                             <button id="Guardado" type="submit" class="btn btn-outline-info col-md-4 offset-2 mr-3">
-                                <i class="fas fa-save"></i> Modificar
+                                <i class="fas fa-save"></i> Registrar
                             </button>
 
-                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/paquete') }}">Cancelar</a>
+                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/cliente') }}">Cancelar</a>
                         </div>
 
                         <br>

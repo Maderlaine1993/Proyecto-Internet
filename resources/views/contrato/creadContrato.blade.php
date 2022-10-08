@@ -1,5 +1,5 @@
 @extends('layouts.app') <!--para heredar de base-->
-@section('title', 'Actualizar Paquete') <!--nombre pagina, nombre de seccion-->
+@section('title', 'Formulario Contrato') <!--nombre pagina, nombre de seccion-->
 @section('content')<!--para heredar la navbar-->
 
 <div class="container">
@@ -16,52 +16,55 @@
                     </ul>
                 </div>
             @endif
+            <?php
+            date_default_timezone_set('America/Guatemala');
+            $fecha = date('Y-m-d');
+
+            ?>
 
             <div class="card">
-                <form action="{{route('updatePaquete', $paquete->codigo)}}" method="POST">
-                    @csrf @method('PATCH')
+                <form action="{{route('contrato.saveContrato')}}" method="POST">
+                    @csrf
 
                     <div class=" card-header text-center" style="background-color: #005555">
-                        <h2 style="color: #FEFBE7"> Actualizar Paquete </h2>
+                        <h2 style="color: #FEFBE7"> Crear Contrato </h2>
                     </div>
 
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->codigo}}"
-                                       placeholder="No.Codigo" name="codigo">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Tiempo del contrato" name="tiem_contrato">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->descripcion}}"
-                                       placeholder="Descripcion" name="descripcion">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Numeros de cuotas" name="no_pago">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->velocidad}}"
-                                       placeholder="Velocidad (Mbps)" name="velocidad">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Saldo" name="saldo">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->precio}}"
-                                       placeholder="Precio" name="precio">
+                                <input type="date" class="form-control" value="<?= $fecha ?>" name="fecha">
                             </div>
                         </div>
                         <br>
-
                         <div class="row form-group">
                             <button id="Guardado" type="submit" class="btn btn-outline-info col-md-4 offset-2 mr-3">
-                                <i class="fas fa-save"></i> Modificar
+                                <i class="fas fa-save"></i> Realizar
                             </button>
 
-                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/paquete') }}">Cancelar</a>
+                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/factura') }}">Cancelar</a>
                         </div>
 
                         <br>

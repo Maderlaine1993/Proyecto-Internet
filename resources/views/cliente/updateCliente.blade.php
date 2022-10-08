@@ -18,40 +18,54 @@
             @endif
 
             <div class="card">
-                <form action="{{route('updatePaquete', $paquete->codigo)}}" method="POST">
+                <form action="{{route('updateCliente', $cliente->nit)}}" method="POST">
                     @csrf @method('PATCH')
 
                     <div class=" card-header text-center" style="background-color: #005555">
-                        <h2 style="color: #FEFBE7"> Actualizar Paquete </h2>
+                        <h2 style="color: #FEFBE7"> Modificar Cliente </h2>
                     </div>
 
                     <div class="card-body">
 
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->codigo}}"
-                                       placeholder="No.Codigo" name="codigo">
+                                <input type="text" class="form-control" value="{{$cliente->nit}}"
+                                       placeholder="NIT" name="nit">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->descripcion}}"
-                                       placeholder="Descripcion" name="descripcion">
+                                <input type="text" class="form-control" value="{{$cliente->nombre}}"
+                                       placeholder="Nombre" name="nombre">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->velocidad}}"
-                                       placeholder="Velocidad (Mbps)" name="velocidad">
+                                <input type="text" class="form-control" value="{{$cliente->apellido}}"
+                                       placeholder="Apellido" name="apellido">
                             </div>
                         </div>
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="text" class="form-control" value="{{$paquete->precio}}"
-                                       placeholder="Precio" name="precio">
+                                <input type="text" class="form-control" value="{{$cliente->direccion}}"
+                                       placeholder="Direccion" name="direccion">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="email" class="form-control" value="{{$cliente->correo}}"
+                                       placeholder="Correo" name="correo">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value="{{$cliente->telefono}}"
+                                       placeholder="Telefono" name="telefono">
                             </div>
                         </div>
                         <br>
@@ -61,7 +75,7 @@
                                 <i class="fas fa-save"></i> Modificar
                             </button>
 
-                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/paquete') }}">Cancelar</a>
+                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/cliente') }}">Cancelar</a>
                         </div>
 
                         <br>

@@ -37,14 +37,7 @@
                         <div class="row">
                             <div class="col-lg">
                                 <input type="text" class="form-control" value=""
-                                       placeholder="Saldo" name="saldo">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg">
-                                <input type="text" class="form-control" value=""
-                                       placeholder="Cuotas" name="cuotas">
+                                       placeholder="Descripcion" name="descripcion">
                             </div>
                         </div>
                         <br>
@@ -57,15 +50,8 @@
                         <br>
                         <div class="row">
                             <div class="col-lg">
-                                <input type="date" class="form-control" value=""
-                                       placeholder="Fecha de Contrato" name="fecha_contrato">
-                            </div>
-                        </div>
-                        <br>
-                        <div class="row">
-                            <div class="col-lg">
                                 <input type="text" class="form-control" value=""
-                                       placeholder="Tiempo del contrato" name="tiempo_contrato">
+                                       placeholder="Precio" name="precio">
                             </div>
                         </div>
                         <br>

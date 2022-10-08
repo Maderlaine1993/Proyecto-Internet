@@ -27,20 +27,16 @@ class PaqueteController extends Controller
     {
         $paquete = $this->validate($request, [
             'codigo' => "required|unique:paquetes",
-            'saldo' => "required",
-            'cuotas' => "required",
+            'descripcion' => "required",
             'velocidad' => "required",
-            'fecha_contrato' => "required",
-            'tiempo_contrato' => "required",
+            'precio' => "required",
         ]);
 
         paquete::create([
             "codigo" => $paquete["codigo"],
-            "saldo" => $paquete["saldo"],
-            "cuotas" => $paquete["cuotas"],
+            "descripcion" => $paquete["descripcion"],
             "velocidad" => $paquete["velocidad"],
-            "fecha_contrato" => $paquete["fecha_contrato"],
-            "tiempo_contrato" => $paquete["tiempo_contrato"],
+            "precio" => $paquete["precio"],
         ]);
 
         return redirect('/read/paquete')->with('Guardado', "Paquete Guardado");

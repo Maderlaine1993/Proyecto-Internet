@@ -28,9 +28,9 @@
                     <th>No. Contrato</th>
                     <th>Cliente</th>
                     <th>Tiempo de validacion</th>
-                    <th>Cuotas</th>
+                    <th>No. Cuotas</th>
                     <th>Saldo</th>
-                    <th>Fecha</th>
+                    <th>Fecha de Inicio</th>
                     <th>Anular</th>
                 </tr>
                 </thead>

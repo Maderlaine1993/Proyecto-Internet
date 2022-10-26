@@ -57,6 +57,13 @@
                         <br>
                         <div class="row">
                             <div class="col-lg">
+                                <input type="text" class="form-control" value="{{$cliente->contraseña}}"
+                                       placeholder="Contraseña" name="contraseña">
+                            </div>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <div class="col-lg">
                                 <input type="email" class="form-control" value="{{$cliente->correo}}"
                                        placeholder="Correo" name="correo">
                             </div>
@@ -93,6 +100,7 @@
                         </div>
 
                         <br>
+                    </div>
                     </div>
                 </form>
             </div>

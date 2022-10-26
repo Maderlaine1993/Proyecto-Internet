@@ -69,6 +69,13 @@
                             </div>
                         </div>
                         <br>
+                        <div class="row">
+                            <div class="col-lg">
+                                <input type="text" class="form-control" value=""
+                                       placeholder="Contraseña" name="contraseña">
+                            </div>
+                        </div>
+                        <br>
                         <!--Para visualizar el estado-->
                         <div class="col-lg">
                             <div class="form-group">

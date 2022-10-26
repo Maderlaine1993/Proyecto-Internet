@@ -12,7 +12,7 @@ class cliente extends Model
     public $table='clientes';
     public $timestamps=false;
     protected $fillable =[
-        'nit', 'nombre', 'apellido', 'direccion','correo','telefono', 'id_estado'
+        'nit', 'nombre', 'apellido', 'direccion','correo','telefono', 'id_estado', 'contraseña'
     ];
     protected $primaryKey = 'nit';
 }

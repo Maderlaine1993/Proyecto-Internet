@@ -39,6 +39,7 @@ class ClienteController extends Controller
             'correo'    => "required|email",
             'telefono'  => "required",
             'id_estado' => "required",
+            'contraseña'=> "required"
 
         ]);
 
@@ -50,6 +51,7 @@ class ClienteController extends Controller
             "correo"    => $cliente["correo"],
             "telefono"  => $cliente["telefono"],
             "id_estado" => $cliente["id_estado"],
+            "contraseña" => $cliente["contraseña"],
         ]);
 
         return redirect('/read/cliente')->with('Guardado', "Cliente Guardado");

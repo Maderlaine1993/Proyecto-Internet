@@ -68,7 +68,7 @@
             <!-- Paginacion -->
             {{ $contrato->links() }}
 
-            <a class="btn btn-primary btn-sm" href=" {{ url('/homeCliente') }}">Regresar</a>
+            <a class="btn btn-primary btn-sm" href=" {{ url('/home') }}">Regresar</a>
 
         </div>
     </div>

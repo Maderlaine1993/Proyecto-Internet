@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('auth.login');
+    return view('inicio');
 });
 
 /* Routes de Rol*/
@@ -63,3 +63,4 @@ Auth::routes();
 /*Routes de vista*/
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/homeCliente', [App\Http\Controllers\HomeController::class, 'indexCliente'])->name('homeCliente');
+Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio');

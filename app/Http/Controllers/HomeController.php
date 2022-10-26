@@ -47,4 +47,8 @@ class HomeController extends Controller
 
         return view('homeCliente', $dato, $datosC);
     }
+
+    public function incio(){
+        return view('inicio');
+    }
 }

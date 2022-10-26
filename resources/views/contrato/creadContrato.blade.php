@@ -59,12 +59,38 @@
                             </div>
                         </div>
                         <br>
+                        <!--Para visualizar nombre clientes-->
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Clientes</label>
+                                <select name="nit" class="form-select" aria-label="Default select example" value="{{old('nit_clientes')}}">
+                                    <option class="align-self-center text-center" value="">--Clientes--</option>
+
+                                    @foreach($nit as $nits)
+                                        <option class="text-center" value="{{$nits->nit}}" > {{$nits->nombre}} {{$nits->apellido}} </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                           <br>
+                            <!--Para visualizar el estado-->
+                            <div class="col-lg">
+                                <div class="form-group">
+                                    <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Paquetes</label>
+                                    <select name="codigo" class="form-select" aria-label="Default select example" value="{{old('codigos_paquetes')}}">
+                                        <option class="align-self-center text-center" value="">--Paquetes--</option>
+
+                                        @foreach($codigo as $codigos)
+                                            <option class="text-center" value="{{$codigos->codigo}}" > {{$codigos->descripcion}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <br>
                         <div class="row form-group">
                             <button id="Guardado" type="submit" class="btn btn-outline-info col-md-4 offset-2 mr-3">
                                 <i class="fas fa-save"></i> Realizar
                             </button>
 
-                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/factura') }}">Cancelar</a>
+                            <a class="btn btn-outline-danger btn-xs col-md-4" href=" {{ url('/read/contrato') }}">Cancelar</a>
                         </div>
 
                         <br>

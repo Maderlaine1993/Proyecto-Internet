@@ -27,6 +27,7 @@
                 <tr>
                     <th>No. Contrato</th>
                     <th>Cliente</th>
+                    <th>Nombre del paquete</th>
                     <th>Tiempo de validacion</th>
                     <th>No. Cuotas</th>
                     <th>Saldo</th>
@@ -39,7 +40,8 @@
                 @foreach($contrato as $contratos)
                     <tr>
                         <td>{{$contratos->id}}</td>
-                        <td>cliente</td>
+                        <td>{{$contratos->nombre}} {{$contratos->apellido}}</td>
+                        <td>{{$contratos->descripcion}}</td>
                         <td>{{$contratos->tiem_contrato}}</td>
                         <td>{{$contratos->no_pago}}</td>
                         <td>Q {{$contratos->saldo}}</td>
@@ -66,7 +68,7 @@
             <!-- Paginacion -->
             {{ $contrato->links() }}
 
-            <a class="btn btn-primary btn-sm" href=" {{ url('/home') }}">Regresar</a>
+            <a class="btn btn-primary btn-sm" href=" {{ url('/homeCliente') }}">Regresar</a>
 
         </div>
     </div>

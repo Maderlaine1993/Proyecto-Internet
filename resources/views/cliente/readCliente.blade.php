@@ -40,6 +40,7 @@
                     <th>Direccion</th>
                     <th>Correo</th>
                     <th>Telefono</th>
+                    <th>Estado</th>
                     <th>Acciones</th>
                 </tr>
                 </thead>
@@ -53,6 +54,7 @@
                         <td>{{$clientes->direccion}}</td>
                         <td>{{$clientes->correo}}</td>
                         <td>{{$clientes->telefono}}</td>
+                        <td>{{$clientes->descripcion_estado}}</td>
                         <td>
                             <div class="btn btn-group">
 

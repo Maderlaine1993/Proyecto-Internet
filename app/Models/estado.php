@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class cliente extends Model
+class estado extends Model
 {
     use HasFactory;
 
-    public $table='clientes';
+    public $table='estado';
     public $timestamps=false;
     protected $fillable =[
-        'nit', 'nombre', 'apellido', 'direccion','correo','telefono', 'id_estado'
+        'id_estado', 'descripcion_estado',
     ];
-    protected $primaryKey = 'nit';
+    protected $primaryKey = 'id_estado';
 }

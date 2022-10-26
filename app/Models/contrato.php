@@ -12,7 +12,7 @@ class contrato extends Model
     public $table='contratos';
     public $timestamps=true;
     protected $fillable =[
-        'id', 'tiem_contrato', 'no_pago','saldo',
+        'id', 'tiem_contrato', 'no_pago','saldo', 'nit', 'codigo'
     ];
     protected $primaryKey = 'id';
 }

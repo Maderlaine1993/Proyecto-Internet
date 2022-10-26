@@ -69,6 +69,19 @@
                             </div>
                         </div>
                         <br>
+                        <!--Para visualizar el estado-->
+                        <div class="col-lg">
+                            <div class="form-group">
+                                <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Estado</label>
+                                <select name="id_estado" class="form-select" aria-label="Default select example" value="{{old('id_estado_estado')}}">
+                                    <option class="align-self-center text-center" value="">--Estado--</option>
+
+                                    @foreach($estado as $estados)
+                                        <option class="text-center" value="{{$estados->id_estado}}" > {{$estados->descripcion_estado}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <br>
 
                         <div class="row form-group">
                             <button id="Guardado" type="submit" class="btn btn-outline-info col-md-4 offset-2 mr-3">

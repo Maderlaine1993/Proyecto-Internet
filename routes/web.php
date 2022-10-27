@@ -3,6 +3,7 @@
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ContratoController;
 use App\Http\Controllers\FacturaController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PaqueteController;
 use App\Http\Controllers\RolController;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,13 @@ Route::get('/createFactura', [FacturaController::class, 'createFactura'])->name(
 Route::post('/factura/createFactura', [FacturaController::class, 'saveFactura'])->name('factura.saveFactura')->middleware('auth');//Ruta para guardar el formulario
 Route::delete('delateFactura/{no_factura}', [FacturaController::class,'deleteFactura'])->name('deleteFactura')->middleware('auth'); //Ruta para eliminar un registro
 
+/*Ruta de clientes*/
+Route::get('/loginCliente', [FacturaController::class, 'loginCliente'])->name('/loginCliente');//Ruta para la vista de login de cliente
+Route::post('/session', [FacturaController::class, 'session'])->name('session');//Ruta de logiarse
+Route::get('/homeCliente', [FacturaController::class, 'indexCliente'])->name('home'); //Ruta del cliente
+Route::get('/cancelar', [FacturaController::class, 'cancelar'])->name('cancelar'); //Ruta de cancelar
+Route::get('/pago',[FacturaController::class, 'pago'])->name('pago');//Ruta de pago
+
 /* Routes de Contrato*/
 Route::get('/read/contrato',  [ContratoController::class, 'readContrato'])->name('readContrato')->middleware('auth');//Ruta para la vista de la tabla de Factura
 Route::get('/createContrato', [ContratoController::class, 'createContrato'])->name('createContrato')->middleware('auth');//Ruta para visualizar formulario
@@ -60,7 +68,10 @@ Route::delete('delateContrato/{id}', [ContratoController::class,'deleteContrato'
 
 Auth::routes();
 
-/*Routes de vista*/
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/homeCliente', [App\Http\Controllers\HomeController::class, 'indexCliente'])->name('homeCliente');
-Route::get('/inicio', [App\Http\Controllers\HomeController::class, 'inicio'])->name('inicio');
+/*Routes de generales*/
+Route::get('/inicio', [HomeController::class, 'inicio'])->name('inicio'); //Ruta de la vista general
+Route::get('/home', [HomeController::class, 'index'])->name('home'); //Ruta del trabajador
+
+
+
+

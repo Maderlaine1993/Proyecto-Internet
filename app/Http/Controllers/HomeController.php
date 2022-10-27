@@ -25,30 +25,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+    //VISTA DEL TRABAJADOR
     public function index()
     {
         return view('home');
     }
 
-    public function indexCliente(){
 
-
-        $dato['contrato']= DB::table('contratos')
-            ->join('clientes','contratos.nit', '=', 'clientes.nit')
-            ->join('paquetes','contratos.codigo', '=', 'paquetes.codigo')
-            ->select('contratos.*', 'clientes.nombre','clientes.apellido', 'paquetes.velocidad')
-            ->paginate(10);//el numero de filas;
-
-        $datosC['cliente']= DB::table('clientes')
-            ->join('estado','clientes.id_estado', '=', 'estado.id_estado')
-            ->select('clientes.*', 'estado.descripcion_estado')
-            ->paginate(10);//el numero de filas;
-
-
-        return view('homeCliente', $dato, $datosC);
-    }
-
+    //VISTA DE INICIO
     public function incio(){
         return view('inicio');
     }
+
+
 }

@@ -17,7 +17,7 @@
         <div class="card text-center border-info">
             <div class="card-body">
                 <h4 class="card-title">CLIENTES</h4>
-                <a href="/login" class="btn btn-primary">Entrar</a>
+                <a href="/loginCliente" class="btn btn-primary">Entrar</a>
             </div>
         </div>
     </div>

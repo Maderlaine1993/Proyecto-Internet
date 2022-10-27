@@ -57,7 +57,7 @@ class ClienteController extends Controller
         return redirect('/read/cliente')->with('Guardado', "Cliente Guardado");
     }
 
-    //ACTUALIZAR
+    //FORMULARIO DE ACTUALIZAR
     public function editCliente($nit)
     {
         //Llave foreana
